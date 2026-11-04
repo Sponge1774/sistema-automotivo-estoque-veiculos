@@ -12,10 +12,10 @@ Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimen
 
 | Entrega | Onde acessar | Conteúdo |
 |---|---|---|
-| **Trabalho teórico (PDF)** | [`docs/teorico/Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo) | Levantamento de requisitos, requisitos, entidades, modelo físico, conceitos de POO, arquitetura, tecnologias e, nos apêndices, todo o código do trabalho |
-| **Trabalho prático (PDF)** | [`docs/pratico/Relatorio_Pratico_Sistema_Automotivo.pdf`](docs/pratico/Relatorio_Pratico_Sistema_Automotivo.pdf) | Execução do sistema com prints, código principal e modelo físico (script SQL) |
-| **Evidências (prints)** | [`docs/pratico/prints/`](docs/pratico/prints) | Capturas de tela numeradas: VS Code, execução, página web e banco de dados |
-| **Modelo físico (SQL)** | [`database/modelo_fisico.sql`](database/modelo_fisico.sql) | Script MySQL com tabelas, chaves, restrições e índices |
+| **Trabalho teórico (PDF)** | [`Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo.pdf) | Levantamento de requisitos, requisitos, entidades, modelo físico, conceitos de POO, arquitetura, tecnologias e, nos apêndices, todo o código do trabalho |
+| **Trabalho prático (PDF)** | [`Relatorio_Pratico_Sistema_Automotivo.pdf`](Relatorio_Pratico_Sistema_Automotivo.pdf) | Execução do sistema com prints, código principal e modelo físico (script SQL) |
+| **Evidências (prints)** | [`Fotos e Prints`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints) | Capturas de tela numeradas: VS Code, execução, página web e banco de dados |
+| **Modelo físico (SQL)** | [`modelo_fisico.sql`](modelo_fisico.sql) | Script MySQL com tabelas, chaves, restrições e índices |
 | **Código-fonte** | [`src/`](src) | Aplicação Java com Spring Boot (descrita abaixo) |
 | **Vídeo pitch (até 4 min)** | YouTube (não listado) | Link: *a ser inserido após a publicação do vídeo* |
 
@@ -23,7 +23,7 @@ Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimen
 
 Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027 e 6028) e trazem capa, folha de rosto, resumo, abstract, listas, sumário, referências e apêndices.
 
-### Relatório teórico — [`docs/teorico/`](docs/teorico)
+### Relatório teórico — [`Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo.pdf)
 
 | Parte | Conteúdo |
 |---|---|
@@ -33,7 +33,7 @@ Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027
 | Seções 6 e 7 | Arquitetura em camadas, API REST e justificativa das tecnologias |
 | Apêndices A a I | **Todo o código do trabalho:** A `pom.xml`; B configuração e comandos; C classe principal e enumerações; D modelo (entidades); E repositórios; F serviços; G controladores e exceções; H `index.html`; I **modelo físico (script SQL)** |
 
-### Relatório prático — [`docs/pratico/`](docs/pratico/)
+### Relatório prático — [`Relatorio_Pratico_Sistema_Automotivo.pdf`](Relatorio_Pratico_Sistema_Automotivo.pdf)
 
 | Parte | Conteúdo |
 |---|---|
@@ -46,54 +46,55 @@ Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027
 
 ## Evidências: pasta de prints
 
-Capturas de tela da execução real do sistema, em [`docs/pratico/prints/`](docs/pratico/prints). Elas são citadas no relatório prático (cada figura indica o arquivo de origem) e aparecem aqui na ordem do trabalho.
+Capturas de tela da execução real do sistema, organizadas em três partes, na pasta [`Fotos e Prints`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints):
 
-| Nº | O que mostra | Arquivo |
+- [**Parte A**](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A): ambiente, estrutura do projeto e código-fonte no VS Code (prints 1 a 7B);
+- [**Parte B**](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B): MySQL, criação do banco e inicialização da aplicação (prints 8 a 11);
+- [**Parte C**](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C): uso da página web e verificação no banco de dados (prints 12 a 23B).
+
+Cada figura do relatório prático foi gerada a partir de um destes prints.
+
+| Parte | Arquivo | O que mostra |
 |---|---|---|
-| 01 | Terminal do VS Code com as versões do Java 17 e do Maven | [`01.png`](docs/pratico/prints/01.png) |
-| 02 | Explorador do VS Code com a estrutura do projeto | [`02.png`](docs/pratico/prints/02.png) |
-| 03 | Veiculo.java (início): herança, atributos privados e anotações | [`03.png`](docs/pratico/prints/03.png) |
-| 03b | Veiculo.java (meio): construtores e validação do ano | [`03b.png`](docs/pratico/prints/03b.png) |
-| 03c | Veiculo.java (final): validação de preço e quilometragem | [`03c.png`](docs/pratico/prints/03c.png) |
-| 04 | VeiculoController.java (início): listagem com filtros e cadastro | [`04.png`](docs/pratico/prints/04.png) |
-| 04b | VeiculoController.java (final): busca, atualização e remoção | [`04b.png`](docs/pratico/prints/04b.png) |
-| 05 | VeiculoRepository.java: consulta JPQL com filtros opcionais | [`05.png`](docs/pratico/prints/05.png) |
-| 06 | application.properties: conexão com o MySQL | [`06.png`](docs/pratico/prints/06.png) |
-| 07 | index.html: estrutura da página | [`07.png`](docs/pratico/prints/07.png) |
-| 07b | index.html: JavaScript que consome a API | [`07b.png`](docs/pratico/prints/07b.png) |
-| 08 | Serviço do MySQL ativo | [`08.png`](docs/pratico/prints/08.png) |
-| 09 | Criação do banco estoque_veiculos | [`09.png`](docs/pratico/prints/09.png) |
-| 10 | Inicialização do Spring Boot (Tomcat na porta 8080) | [`10.png`](docs/pratico/prints/10.png) |
-| 11 | Tabelas marca, modelo e veiculo criadas automaticamente | [`11.png`](docs/pratico/prints/11.png) |
-| 12 | Página inicial com 6 veículos (dados de exemplo) | [`12.png`](docs/pratico/prints/12.png) |
-| 13 | Filtro por marca (Honda) | [`13.png`](docs/pratico/prints/13.png) |
-| 14 | Filtro por faixa de preço | [`14.png`](docs/pratico/prints/14.png) |
-| 15a | Filtro por ano (2022) | [`15a.png`](docs/pratico/prints/15a.png) |
-| 15b | Filtro por situação (VENDIDO) | [`15b.png`](docs/pratico/prints/15b.png) |
-| 16 | Cadastro de veículo (Create) | [`16.png`](docs/pratico/prints/16.png) |
-| 17 | Atualização de veículo (Update) | [`17.png`](docs/pratico/prints/17.png) |
-| 18 | Remoção de veículo (Delete) | [`18.png`](docs/pratico/prints/18.png) |
-| 19 | Validação: preço negativo recusado | [`19.png`](docs/pratico/prints/19.png) |
-| 20 | Aba Marcas | [`20.png`](docs/pratico/prints/20.png) |
-| 20b | Aba Modelos | [`20b.png`](docs/pratico/prints/20b.png) |
-| 21 | DESCRIBE veiculo no MySQL | [`21.png`](docs/pratico/prints/21.png) |
-| 22 | Consulta com JOIN: os 6 veículos gravados | [`22.png`](docs/pratico/prints/22.png) |
-| 23a | Página após editar o preço do Corolla | [`23a.png`](docs/pratico/prints/23a.png) |
-| 23b | Consulta no banco confirmando o novo preço | [`23b.png`](docs/pratico/prints/23b.png) |
-| 24 | Página do repositório no GitHub | [`24.png`](docs/pratico/prints/24.png) |
+| Parte A | [`print1.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print1.png) | Terminal do VS Code com as versões do Java 17 e do Maven |
+| Parte A | [`print2.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print2.png) | Explorador do VS Code com a estrutura do projeto |
+| Parte A | [`print3.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print3.png) | Veiculo.java (início): herança, atributos privados e anotações |
+| Parte A | [`print3B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print3B.png) | Veiculo.java (meio): construtores e validação do ano |
+| Parte A | [`print4.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print4.png) | VeiculoController.java (início): listagem com filtros e cadastro |
+| Parte A | [`print4B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print4B.png) | VeiculoController.java (final): busca, atualização e remoção |
+| Parte A | [`print5.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print5.png) | VeiculoRepository.java: consulta JPQL com filtros opcionais |
+| Parte A | [`print6.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print6.png) | application.properties: conexão com o MySQL |
+| Parte A | [`print7.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print7.png) | index.html: estrutura da página |
+| Parte A | [`print7B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print7B.png) | index.html: JavaScript que consome a API |
+| Parte B | [`print8.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B/print8.png) | Serviço do MySQL ativo |
+| Parte B | [`print9.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B/print9.png) | Criação do banco estoque_veiculos |
+| Parte B | [`print10.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B/print10.png) | Inicialização do Spring Boot (Tomcat na porta 8080) |
+| Parte B | [`print11.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B/print11.png) | Tabelas marca, modelo e veiculo criadas automaticamente |
+| Parte C | [`print12.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print12.png) | Página inicial com 6 veículos (dados de exemplo) |
+| Parte C | [`print13.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print13.png) | Filtro por marca (Honda) |
+| Parte C | [`print14.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print14.png) | Filtro por faixa de preço |
+| Parte C | [`print15A.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print15A.png) | Filtro por ano (2022) |
+| Parte C | [`print15B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print15B.png) | Filtro por situação (VENDIDO) |
+| Parte C | [`print16.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print16.png) | Cadastro de veículo (Create) |
+| Parte C | [`print17.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print17.png) | Atualização de veículo (Update) |
+| Parte C | [`print18.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print18.png) | Remoção de veículo (Delete) |
+| Parte C | [`print19.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print19.png) | Validação: preço negativo recusado |
+| Parte C | [`print20.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print20.png) | Aba Marcas |
+| Parte C | [`print20B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print20B.png) | Aba Modelos |
+| Parte C | [`print21.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print21.png) | DESCRIBE veiculo no MySQL |
+| Parte C | [`print22.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print22.png) | Consulta com JOIN: os 6 veículos gravados |
+| Parte C | [`print23A.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print23A.png) | Página após editar o preço do Corolla |
+| Parte C | [`print23B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print23B.png) | Consulta no banco confirmando o novo preço |
 
 ## Estrutura do repositório
 
 ```
 sistema-automotivo-estoque-veiculos/
-├── docs/
-│   ├── teorico/
-│   │   └── Relatorio_Teorico_Sistema_Automotivo.pdf
-│   └── pratico/
-│       ├── Relatorio_Pratico_Sistema_Automotivo.pdf
-│       └── prints/                      (capturas de tela 01 a 24, incluindo as variações 03b, 15a, 20b etc.)
-├── database/
-│   └── modelo_fisico.sql                (modelo físico: script de criação das tabelas)
+├── Fotos e Prints-20261104T012307Z-1-001/
+│   └── Fotos e Prints/
+│       ├── Parte A/                     (prints 1 a 7B: ambiente e código no VS Code)
+│       ├── Parte B/                     (prints 8 a 11: MySQL e inicialização)
+│       └── Parte C/                     (prints 12 a 23B: página web e banco de dados)
 ├── src/main/java/br/com/estoque/
 │   ├── controller/                      (API REST)
 │   ├── exception/                       (tratamento de erros)
@@ -104,6 +105,9 @@ sistema-automotivo-estoque-veiculos/
 ├── src/main/resources/
 │   ├── application.properties           (conexão com o MySQL)
 │   └── static/index.html                (interface web)
+├── Relatorio_Teorico_Sistema_Automotivo.pdf
+├── Relatorio_Pratico_Sistema_Automotivo.pdf
+├── modelo_fisico.sql                    (modelo físico: script de criação das tabelas)
 ├── pom.xml
 ├── LICENSE
 └── README.md
@@ -111,7 +115,7 @@ sistema-automotivo-estoque-veiculos/
 
 ## Modelo físico do banco de dados
 
-O script [`database/modelo_fisico.sql`](database/modelo_fisico.sql) cria o banco `estoque_veiculos` e as tabelas `marca`, `modelo` e `veiculo`, com chaves primárias e estrangeiras, restrições de validação (`CHECK`: ano a partir de 1900, preço maior que zero e quilometragem não negativa) e índices de apoio aos filtros. Requer MySQL 8.0.16 ou superior.
+O script [`modelo_fisico.sql`](modelo_fisico.sql) cria o banco `estoque_veiculos` e as tabelas `marca`, `modelo` e `veiculo`, com chaves primárias e estrangeiras, restrições de validação (`CHECK`: ano a partir de 1900, preço maior que zero e quilometragem não negativa) e índices de apoio aos filtros. Requer MySQL 8.0.16 ou superior.
 
 | Tabela | Colunas | Chaves e restrições |
 |---|---|---|
@@ -122,7 +126,7 @@ O script [`database/modelo_fisico.sql`](database/modelo_fisico.sql) cria o banco
 O uso do script é opcional: ao iniciar, a aplicação cria o mesmo esquema automaticamente (`ddl-auto=update`). Para executá-lo manualmente (atenção: apaga as tabelas existentes e seus dados):
 
 ```bash
-sudo mysql < database/modelo_fisico.sql
+sudo mysql < modelo_fisico.sql
 ```
 
 ## Tecnologias
