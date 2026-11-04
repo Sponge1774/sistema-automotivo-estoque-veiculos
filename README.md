@@ -44,6 +44,44 @@ Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027
 | Seção 7 | Repositório no GitHub |
 | Apêndices A e B | A código-fonte principal; B **modelo físico (script SQL)** |
 
+## Evidências: pasta de prints
+
+Capturas de tela da execução real do sistema, em [`docs/pratico/prints/`](docs/pratico/prints). Elas são citadas no relatório prático (cada figura indica o arquivo de origem) e aparecem aqui na ordem do trabalho.
+
+| Nº | O que mostra | Arquivo |
+|---|---|---|
+| 01 | Terminal do VS Code com as versões do Java 17 e do Maven | [`01.png`](docs/pratico/prints/01.png) |
+| 02 | Explorador do VS Code com a estrutura do projeto | [`02.png`](docs/pratico/prints/02.png) |
+| 03 | Veiculo.java (início): herança, atributos privados e anotações | [`03.png`](docs/pratico/prints/03.png) |
+| 03b | Veiculo.java (meio): construtores e validação do ano | [`03b.png`](docs/pratico/prints/03b.png) |
+| 03c | Veiculo.java (final): validação de preço e quilometragem | [`03c.png`](docs/pratico/prints/03c.png) |
+| 04 | VeiculoController.java (início): listagem com filtros e cadastro | [`04.png`](docs/pratico/prints/04.png) |
+| 04b | VeiculoController.java (final): busca, atualização e remoção | [`04b.png`](docs/pratico/prints/04b.png) |
+| 05 | VeiculoRepository.java: consulta JPQL com filtros opcionais | [`05.png`](docs/pratico/prints/05.png) |
+| 06 | application.properties: conexão com o MySQL | [`06.png`](docs/pratico/prints/06.png) |
+| 07 | index.html: estrutura da página | [`07.png`](docs/pratico/prints/07.png) |
+| 07b | index.html: JavaScript que consome a API | [`07b.png`](docs/pratico/prints/07b.png) |
+| 08 | Serviço do MySQL ativo | [`08.png`](docs/pratico/prints/08.png) |
+| 09 | Criação do banco estoque_veiculos | [`09.png`](docs/pratico/prints/09.png) |
+| 10 | Inicialização do Spring Boot (Tomcat na porta 8080) | [`10.png`](docs/pratico/prints/10.png) |
+| 11 | Tabelas marca, modelo e veiculo criadas automaticamente | [`11.png`](docs/pratico/prints/11.png) |
+| 12 | Página inicial com 6 veículos (dados de exemplo) | [`12.png`](docs/pratico/prints/12.png) |
+| 13 | Filtro por marca (Honda) | [`13.png`](docs/pratico/prints/13.png) |
+| 14 | Filtro por faixa de preço | [`14.png`](docs/pratico/prints/14.png) |
+| 15a | Filtro por ano (2022) | [`15a.png`](docs/pratico/prints/15a.png) |
+| 15b | Filtro por situação (VENDIDO) | [`15b.png`](docs/pratico/prints/15b.png) |
+| 16 | Cadastro de veículo (Create) | [`16.png`](docs/pratico/prints/16.png) |
+| 17 | Atualização de veículo (Update) | [`17.png`](docs/pratico/prints/17.png) |
+| 18 | Remoção de veículo (Delete) | [`18.png`](docs/pratico/prints/18.png) |
+| 19 | Validação: preço negativo recusado | [`19.png`](docs/pratico/prints/19.png) |
+| 20 | Aba Marcas | [`20.png`](docs/pratico/prints/20.png) |
+| 20b | Aba Modelos | [`20b.png`](docs/pratico/prints/20b.png) |
+| 21 | DESCRIBE veiculo no MySQL | [`21.png`](docs/pratico/prints/21.png) |
+| 22 | Consulta com JOIN: os 6 veículos gravados | [`22.png`](docs/pratico/prints/22.png) |
+| 23a | Página após editar o preço do Corolla | [`23a.png`](docs/pratico/prints/23a.png) |
+| 23b | Consulta no banco confirmando o novo preço | [`23b.png`](docs/pratico/prints/23b.png) |
+| 24 | Página do repositório no GitHub | [`24.png`](docs/pratico/prints/24.png) |
+
 ## Estrutura do repositório
 
 ```
@@ -53,7 +91,7 @@ sistema-automotivo-estoque-veiculos/
 │   │   └── Relatorio_Teorico_Sistema_Automotivo.pdf
 │   └── pratico/
 │       ├── Relatorio_Pratico_Sistema_Automotivo.pdf
-│       └── prints/                      (capturas de tela 01 a 24)
+│       └── prints/                      (capturas de tela 01 a 24, incluindo as variações 03b, 15a, 20b etc.)
 ├── database/
 │   └── modelo_fisico.sql                (modelo físico: script de criação das tabelas)
 ├── src/main/java/br/com/estoque/
