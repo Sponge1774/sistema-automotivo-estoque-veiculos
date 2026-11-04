@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestão de Estoque de Veículos</title>
+<style>
+  :root {
+    --azul: #1f3a5f; --azul-claro: #e8eef6; --borda: #d3dbe6; --fundo: #f4f6f9;
+    --verde: #1b7f4b; --amarelo: #a86a00; --vermelho: #b3261e; --texto: #1c2430;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+         background: var(--fundo); color: var(--texto); }
+  header { background: var(--azul); color: #fff; padding: 16px 24px; display: flex; flex-wrap: wrap;
+           align-items: center; justify-content: space-between; gap: 12px; }
+  header h1 { font-size: 20px; margin: 0; }
+  header small { display: block; opacity: .8; font-weight: 400; margin-top: 2px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 60px; }
+  nav { display: flex; gap: 8px; margin-bottom: 16px; }
+  nav button { border: 1px solid var(--borda); background: #fff; padding: 9px 18px; border-radius: 8px;
+               cursor: pointer; font-size: 15px; color: var(--azul); }
+  nav button.ativo { background: var(--azul); color: #fff; border-color: var(--azul); }
+  section.painel { display: none; }
+  section.painel.ativo { display: block; }
+  .cartao { background: #fff; border: 1px solid var(--borda); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  .cartao h2 { font-size: 16px; margin: 0 0 12px; color: var(--azul); }
+  .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; align-items: end; }
+  label { display: block; font-size: 12px; font-weight: 600; color: #455068; margin-bottom: 4px; }
+  input, select { width: 100%; padding: 8px 10px; border: 1px solid var(--borda); border-radius: 6px;
+                  font-size: 14px; background: #fff; color: var(--texto); }
+  input:focus, select:focus { outline: 2px solid #8fb0dd; border-color: #8fb0dd; }
+  .acoes { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  button.btn { padding: 9px 16px; border-radius: 6px; border: 1px solid var(--azul); background: var(--azul);
+               color: #fff; cursor: pointer; font-size: 14px; }
+  button.btn.sec { background: #fff; color: var(--azul); }
+  button.btn.perigo { background: #fff; color: var(--vermelho); border-color: var(--vermelho); }
+  button.btn.peq { padding: 4px 10px; font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; background: var(--azul-claro); color: var(--azul); padding: 9px 10px; font-size: 12px;
+       text-transform: uppercase; letter-spacing: .03em; }
+  td { padding: 9px 10px; border-top: 1px solid var(--borda); }
+  td.num, th.num { text-align: right; }
+  tr:hover td { background: #fafbfd; }
+  .selo { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .DISPONIVEL { background: #dff3e8; color: var(--verde); }
+  .RESERVADO { background: #fdeccc; color: var(--amarelo); }
+  .VENDIDO { background: #f6d9d6; color: var(--vermelho); }
+  .contagem { font-size: 13px; color: #55627a; margin: 0 0 10px; }
+  .vazio { text-align: center; color: #66738b; padding: 24px; }
+  #aviso { position: fixed; right: 16px; bottom: 16px; max-width: 420px; padding: 12px 16px; border-radius: 8px;
+           color: #fff; font-size: 14px; display: none; box-shadow: 0 4px 16px rgba(0,0,0,.25); z-index: 10; }
+  #aviso.ok { background: var(--verde); display: block; }
+  #aviso.erro { background: var(--vermelho); display: block; }
+  .oculto { display: none; }
+  .tabela-rolagem { overflow-x: auto; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Sistema Automotivo – Gestão de Estoque de Veículos
+    <small>Java · Spring Boot · MySQL · API REST</small></h1>
+  <button class="btn sec" id="btnExemplo" title="Cadastra marcas, modelos e veículos de exemplo">Carregar dados de exemplo</button>
+</header>
+
+<main>
+  <nav>
+    <button class="ativo" data-aba="veiculos">Veículos</button>
+    <button data-aba="marcas">Marcas</button>
+    <button data-aba="modelos">Modelos</button>
+  </nav>
+
+  <!-- ===================== VEÍCULOS ===================== -->
+  <section class="painel ativo" id="aba-veiculos">
+    <div class="cartao">
+      <h2>Consulta e filtros</h2>
+      <form id="formFiltro" class="grade">
+        <div><label>Marca</label><select id="fMarca"></select></div>
+        <div><label>Modelo</label><input id="fModelo" placeholder="Ex.: Corolla"></div>
+        <div><label>Preço mínimo (R$)</label><input id="fPrecoMin" type="number" min="0" step="0.01"></div>
+        <div><label>Preço máximo (R$)</label><input id="fPrecoMax" type="number" min="0" step="0.01"></div>
+        <div><label>Ano</label><input id="fAno" type="number" min="1900" max="2100"></div>
+        <div><label>Situação</label>
+          <select id="fStatus"><option value="">Todas</option><option>DISPONIVEL</option><option>RESERVADO</option><option>VENDIDO</option></select></div>
+        <div><label>Tipo</label>
+          <select id="fTipo"><option value="">Todos</option><option>CARRO</option><option>MOTO</option><option>CAMINHAO</option></select></div>
+        <div class="acoes" style="margin:0">
+          <button class="btn" type="submit">Buscar</button>
+          <button class="btn sec" type="button" id="btnLimpar">Limpar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="cartao">
+      <h2 id="tituloFormVeiculo">Cadastrar veículo</h2>
+      <form id="formVeiculo" class="grade">
+        <input type="hidden" id="vId">
+        <div><label>Modelo (marca)</label><select id="vModelo" required></select></div>
+        <div><label>Tipo</label>
+          <select id="vTipo"><option>CARRO</option><option>MOTO</option><option>CAMINHAO</option></select></div>
+        <div><label>Ano de fabricação</label><input id="vAno" type="number" required></div>
+        <div><label>Cor</label><input id="vCor" required></div>
+        <div><label>Preço (R$)</label><input id="vPreco" type="number" step="0.01" required></div>
+        <div><label>Quilometragem</label><input id="vKm" type="number" required></div>
+        <div><label>Situação</label>
+          <select id="vStatus"><option>DISPONIVEL</option><option>RESERVADO</option><option>VENDIDO</option></select></div>
+        <div class="acoes" style="margin:0">
+          <button class="btn" type="submit" id="btnSalvarVeiculo">Cadastrar</button>
+          <button class="btn sec oculto" type="button" id="btnCancelarEdicao">Cancelar edição</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="cartao">
+      <h2>Veículos em estoque</h2>
+      <p class="contagem" id="contagem"></p>
+      <div class="tabela-rolagem">
+        <table>
+          <thead><tr><th>ID</th><th>Marca</th><th>Modelo</th><th>Tipo</th><th class="num">Ano</th><th>Cor</th>
+            <th class="num">Preço</th><th class="num">Km</th><th>Situação</th><th>Ações</th></tr></thead>
+          <tbody id="tbVeiculos"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MARCAS ===================== -->
+  <section class="painel" id="aba-marcas">
+    <div class="cartao">
+      <h2 id="tituloFormMarca">Cadastrar marca</h2>
+      <form id="formMarca" class="grade">
+        <input type="hidden" id="mId">
+        <div><label>Nome da marca</label><input id="mNome" required placeholder="Ex.: Toyota"></div>
+        <div class="acoes" style="margin:0">
+          <button class="btn" type="submit" id="btnSalvarMarca">Cadastrar</button>
+          <button class="btn sec oculto" type="button" id="btnCancelarMarca">Cancelar edição</button>
+        </div>
+      </form>
+    </div>
+    <div class="cartao">
+      <h2>Marcas cadastradas</h2>
+      <table><thead><tr><th>ID</th><th>Nome</th><th>Ações</th></tr></thead><tbody id="tbMarcas"></tbody></table>
+    </div>
+  </section>
+
+  <!-- ===================== MODELOS ===================== -->
+  <section class="painel" id="aba-modelos">
+    <div class="cartao">
+      <h2 id="tituloFormModelo">Cadastrar modelo</h2>
+      <form id="formModelo" class="grade">
+        <input type="hidden" id="oId">
+        <div><label>Nome do modelo</label><input id="oNome" required placeholder="Ex.: Corolla"></div>
+        <div><label>Marca</label><select id="oMarca" required></select></div>
+        <div class="acoes" style="margin:0">
+          <button class="btn" type="submit" id="btnSalvarModelo">Cadastrar</button>
+          <button class="btn sec oculto" type="button" id="btnCancelarModelo">Cancelar edição</button>
+        </div>
+      </form>
+    </div>
+    <div class="cartao">
+      <h2>Modelos cadastrados</h2>
+      <table><thead><tr><th>ID</th><th>Modelo</th><th>Marca</th><th>Ações</th></tr></thead><tbody id="tbModelos"></tbody></table>
+    </div>
+  </section>
+</main>
+
+<div id="aviso" role="status"></div>
+
+<script>
+const API = '/api';
+let marcas = [], modelos = [], veiculos = [];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const moeda = v => Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const numero = v => Number(v).toLocaleString('pt-BR');
+
+let temporizador;
+function aviso(texto, tipo = 'ok') {
+  const el = $('aviso');
+  el.textContent = texto; el.className = tipo;
+  clearTimeout(temporizador);
+  temporizador = setTimeout(() => { el.className = ''; }, tipo === 'ok' ? 3500 : 7000);
+}
+
+async function api(caminho, opcoes = {}) {
+  let r;
+  try {
+    r = await fetch(API + caminho, { headers: { 'Content-Type': 'application/json' }, ...opcoes });
+  } catch (e) {
+    throw new Error('Não foi possível conectar ao sistema. Ele está ligado?');
+  }
+  if (r.status === 204) return null;
+  let dados = null;
+  try { dados = await r.json(); } catch (e) { /* resposta sem corpo */ }
+  if (!r.ok) {
+    let msg = (dados && dados.erro) ? dados.erro : 'Erro ' + r.status;
+    if (dados && dados.campos) msg += ': ' + Object.values(dados.campos).join('; ');
+    throw new Error(msg);
+  }
+  return dados;
+}
+
+async function executar(acao, mensagemOk) {
+  try { await acao(); if (mensagemOk) aviso(mensagemOk); }
+  catch (e) { aviso(e.message, 'erro'); }
+}
+
+/* ---------------- abas ---------------- */
+document.querySelectorAll('nav button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('nav button').forEach(x => x.classList.toggle('ativo', x === b));
+  document.querySelectorAll('.painel').forEach(p => p.classList.toggle('ativo', p.id === 'aba-' + b.dataset.aba));
+}));
+
+/* ---------------- carregamento ---------------- */
+async function carregarBase() {
+  marcas = await api('/marcas');
+  modelos = await api('/modelos');
+  desenharMarcas(); desenharModelos(); preencherSelects();
+}
+
+function consultaFiltro() {
+  const p = new URLSearchParams();
+  const add = (k, v) => { if (v !== '' && v != null) p.append(k, v); };
+  add('marca', $('fMarca').value); add('modelo', $('fModelo').value.trim());
+  add('precoMin', $('fPrecoMin').value); add('precoMax', $('fPrecoMax').value);
+  add('ano', $('fAno').value); add('status', $('fStatus').value); add('tipo', $('fTipo').value);
+  const s = p.toString();
+  return '/veiculos' + (s ? '?' + s : '');
+}
+
+async function carregarVeiculos() {
+  veiculos = await api(consultaFiltro());
+  desenharVeiculos();
+}
+
+async function recarregarTudo() {
+  await carregarBase();
+  await carregarVeiculos();
+}
+
+/* ---------------- desenho das tabelas ---------------- */
+function preencherSelects() {
+  const marcaAtual = $('fMarca').value;
+  $('fMarca').innerHTML = '<option value="">Todas</option>' + marcas.map(m => `<option>${esc(m.nome)}</option>`).join('');
+  $('fMarca').value = marcaAtual;
+  const sel = $('vModelo').value;
+  $('vModelo').innerHTML = modelos.length
+    ? modelos.map(o => `<option value="${o.id}">${esc(o.marca.nome)} – ${esc(o.nome)}</option>`).join('')
+    : '<option value="">Cadastre um modelo primeiro</option>';
+  if (sel) $('vModelo').value = sel;
+  const selMarca = $('oMarca').value;
+  $('oMarca').innerHTML = marcas.length
+    ? marcas.map(m => `<option value="${m.id}">${esc(m.nome)}</option>`).join('')
+    : '<option value="">Cadastre uma marca primeiro</option>';
+  if (selMarca) $('oMarca').value = selMarca;
+}
+
+function desenharVeiculos() {
+  $('contagem').textContent = veiculos.length === 1 ? '1 veículo encontrado' : veiculos.length + ' veículos encontrados';
+  $('tbVeiculos').innerHTML = veiculos.length ? veiculos.map(v => `
+    <tr>
+      <td>${v.id}</td><td>${esc(v.modelo.marca.nome)}</td><td>${esc(v.modelo.nome)}</td><td>${esc(v.tipo)}</td>
+      <td class="num">${v.anoFabricacao}</td><td>${esc(v.cor)}</td>
+      <td class="num">${moeda(v.preco)}</td><td class="num">${numero(v.quilometragem)}</td>
+      <td><span class="selo ${esc(v.status)}">${esc(v.status)}</span></td>
+      <td><button class="btn sec peq" onclick="editarVeiculo(${v.id})">Editar</button>
+          <button class="btn perigo peq" onclick="removerVeiculo(${v.id})">Remover</button></td>
+    </tr>`).join('') : '<tr><td colspan="10" class="vazio">Nenhum veículo encontrado.</td></tr>';
+}
+
+function desenharMarcas() {
+  $('tbMarcas').innerHTML = marcas.length ? marcas.map(m => `
+    <tr><td>${m.id}</td><td>${esc(m.nome)}</td>
+    <td><button class="btn sec peq" onclick="editarMarca(${m.id})">Editar</button>
+        <button class="btn perigo peq" onclick="removerMarca(${m.id})">Remover</button></td></tr>`).join('')
+    : '<tr><td colspan="3" class="vazio">Nenhuma marca cadastrada.</td></tr>';
+}
+
+function desenharModelos() {
+  $('tbModelos').innerHTML = modelos.length ? modelos.map(o => `
+    <tr><td>${o.id}</td><td>${esc(o.nome)}</td><td>${esc(o.marca.nome)}</td>
+    <td><button class="btn sec peq" onclick="editarModelo(${o.id})">Editar</button>
+        <button class="btn perigo peq" onclick="removerModelo(${o.id})">Remover</button></td></tr>`).join('')
+    : '<tr><td colspan="4" class="vazio">Nenhum modelo cadastrado.</td></tr>';
+}
+
+/* ---------------- veículos: filtro, cadastro, edição, remoção ---------------- */
+$('formFiltro').addEventListener('submit', e => { e.preventDefault(); executar(carregarVeiculos); });
+$('btnLimpar').addEventListener('click', () => { $('formFiltro').reset(); executar(carregarVeiculos); });
+
+function dadosVeiculo() {
+  return {
+    modelo: { id: Number($('vModelo').value) },
+    tipo: $('vTipo').value,
+    anoFabricacao: Number($('vAno').value),
+    cor: $('vCor').value.trim(),
+    preco: Number($('vPreco').value),
+    quilometragem: Number($('vKm').value),
+    status: $('vStatus').value
+  };
+}
+
+function sairEdicaoVeiculo() {
+  $('formVeiculo').reset(); $('vId').value = '';
+  $('tituloFormVeiculo').textContent = 'Cadastrar veículo';
+  $('btnSalvarVeiculo').textContent = 'Cadastrar';
+  $('btnCancelarEdicao').classList.add('oculto');
+}
+$('btnCancelarEdicao').addEventListener('click', sairEdicaoVeiculo);
+
+$('formVeiculo').addEventListener('submit', e => {
+  e.preventDefault();
+  const id = $('vId').value;
+  executar(async () => {
+    if (id) await api('/veiculos/' + id, { method: 'PUT', body: JSON.stringify(dadosVeiculo()) });
+    else await api('/veiculos', { method: 'POST', body: JSON.stringify(dadosVeiculo()) });
+    sairEdicaoVeiculo();
+    await carregarVeiculos();
+  }, id ? 'Veículo atualizado com sucesso.' : 'Veículo cadastrado com sucesso.');
+});
+
+window.editarVeiculo = id => {
+  const v = veiculos.find(x => x.id === id); if (!v) return;
+  $('vId').value = v.id; $('vModelo').value = v.modelo.id; $('vTipo').value = v.tipo;
+  $('vAno').value = v.anoFabricacao; $('vCor').value = v.cor; $('vPreco').value = v.preco;
+  $('vKm').value = v.quilometragem; $('vStatus').value = v.status;
+  $('tituloFormVeiculo').textContent = 'Editar veículo ' + v.id;
+  $('btnSalvarVeiculo').textContent = 'Salvar alterações';
+  $('btnCancelarEdicao').classList.remove('oculto');
+  $('formVeiculo').scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+
+window.removerVeiculo = id => {
+  if (!confirm('Remover o veículo ' + id + ' do estoque?')) return;
+  executar(async () => { await api('/veiculos/' + id, { method: 'DELETE' }); await carregarVeiculos(); },
+           'Veículo removido do estoque.');
+};
+
+/* ---------------- marcas ---------------- */
+function sairEdicaoMarca() {
+  $('formMarca').reset(); $('mId').value = '';
+  $('tituloFormMarca').textContent = 'Cadastrar marca'; $('btnSalvarMarca').textContent = 'Cadastrar';
+  $('btnCancelarMarca').classList.add('oculto');
+}
+$('btnCancelarMarca').addEventListener('click', sairEdicaoMarca);
+$('formMarca').addEventListener('submit', e => {
+  e.preventDefault();
+  const id = $('mId').value, corpo = JSON.stringify({ nome: $('mNome').value.trim() });
+  executar(async () => {
+    if (id) await api('/marcas/' + id, { method: 'PUT', body: corpo });
+    else await api('/marcas', { method: 'POST', body: corpo });
+    sairEdicaoMarca(); await recarregarTudo();
+  }, id ? 'Marca atualizada.' : 'Marca cadastrada.');
+});
+window.editarMarca = id => {
+  const m = marcas.find(x => x.id === id); if (!m) return;
+  $('mId').value = m.id; $('mNome').value = m.nome;
+  $('tituloFormMarca').textContent = 'Editar marca ' + m.id; $('btnSalvarMarca').textContent = 'Salvar alterações';
+  $('btnCancelarMarca').classList.remove('oculto');
+};
+window.removerMarca = id => {
+  if (!confirm('Remover a marca ' + id + '?')) return;
+  executar(async () => { await api('/marcas/' + id, { method: 'DELETE' }); await recarregarTudo(); }, 'Marca removida.');
+};
+
+/* ---------------- modelos ---------------- */
+function sairEdicaoModelo() {
+  $('formModelo').reset(); $('oId').value = '';
+  $('tituloFormModelo').textContent = 'Cadastrar modelo'; $('btnSalvarModelo').textContent = 'Cadastrar';
+  $('btnCancelarModelo').classList.add('oculto');
+}
+$('btnCancelarModelo').addEventListener('click', sairEdicaoModelo);
+$('formModelo').addEventListener('submit', e => {
+  e.preventDefault();
+  const id = $('oId').value;
+  const corpo = JSON.stringify({ nome: $('oNome').value.trim(), marca: { id: Number($('oMarca').value) } });
+  executar(async () => {
+    if (id) await api('/modelos/' + id, { method: 'PUT', body: corpo });
+    else await api('/modelos', { method: 'POST', body: corpo });
+    sairEdicaoModelo(); await recarregarTudo();
+  }, id ? 'Modelo atualizado.' : 'Modelo cadastrado.');
+});
+window.editarModelo = id => {
+  const o = modelos.find(x => x.id === id); if (!o) return;
+  $('oId').value = o.id; $('oNome').value = o.nome; $('oMarca').value = o.marca.id;
+  $('tituloFormModelo').textContent = 'Editar modelo ' + o.id; $('btnSalvarModelo').textContent = 'Salvar alterações';
+  $('btnCancelarModelo').classList.remove('oculto');
+};
+window.removerModelo = id => {
+  if (!confirm('Remover o modelo ' + id + '?')) return;
+  executar(async () => { await api('/modelos/' + id, { method: 'DELETE' }); await recarregarTudo(); }, 'Modelo removido.');
+};
+
+/* ---------------- dados de exemplo ---------------- */
+$('btnExemplo').addEventListener('click', () => executar(async () => {
+  const exMarcas = ['Toyota', 'Chevrolet', 'Honda', 'Volkswagen'];
+  const exModelos = [['Corolla', 'Toyota'], ['Onix', 'Chevrolet'], ['CG 160', 'Honda'], ['Civic', 'Honda'],
+                     ['Constellation', 'Volkswagen']];
+  const exVeiculos = [
+    ['Corolla', 'CARRO', 2022, 'Prata', 120000, 15000, 'DISPONIVEL'],
+    ['Onix', 'CARRO', 2020, 'Branco', 65000, 48000, 'DISPONIVEL'],
+    ['Onix', 'CARRO', 2023, 'Preto', 85000, 9000, 'RESERVADO'],
+    ['CG 160', 'MOTO', 2023, 'Vermelha', 16000, 5000, 'DISPONIVEL'],
+    ['Civic', 'CARRO', 2021, 'Cinza', 105000, 30000, 'VENDIDO'],
+    ['Constellation', 'CAMINHAO', 2019, 'Branco', 310000, 120000, 'DISPONIVEL']
+  ];
+  await carregarBase();
+  for (const nome of exMarcas)
+    if (!marcas.some(m => m.nome === nome)) await api('/marcas', { method: 'POST', body: JSON.stringify({ nome }) });
+  await carregarBase();
+  for (const [nome, marca] of exModelos)
+    if (!modelos.some(o => o.nome === nome && o.marca.nome === marca))
+      await api('/modelos', { method: 'POST', body: JSON.stringify({ nome, marca: { id: marcas.find(m => m.nome === marca).id } }) });
+  await carregarBase();
+  const existentes = await api('/veiculos');
+  if (existentes.length === 0) {
+    for (const [modelo, tipo, ano, cor, preco, km, status] of exVeiculos)
+      await api('/veiculos', { method: 'POST', body: JSON.stringify({
+        modelo: { id: modelos.find(o => o.nome === modelo).id }, tipo, anoFabricacao: ano, cor, preco, quilometragem: km, status }) });
+  }
+  await recarregarTudo();
+}, 'Dados de exemplo carregados.'));
+
+/* ---------------- início ---------------- */
+executar(recarregarTudo);
+</script>
+</body>
+</html>
