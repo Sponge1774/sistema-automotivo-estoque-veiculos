@@ -4,7 +4,7 @@ Sistema CRUD orientado a objetos para gerenciar o estoque de veículos de uma co
 
 Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimento de Sistemas – UniFECAF).
 
-**Autor:** Eduardo Souza Mattos
+**Autor:** Eduardo Souza Mattos – R.A. 35984
 
 ---
 
@@ -12,11 +12,37 @@ Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimen
 
 | Entrega | Onde acessar | Conteúdo |
 |---|---|---|
-| **Trabalho teórico** | [`docs/teorico/`](docs/teorico) | Relatório teórico em PDF (conceitos de POO, arquitetura e decisões de projeto) |
-| **Trabalho prático** | [`docs/pratico/`](docs/pratico) | Relatório prático em PDF (execução do sistema, código principal e evidências) |
+| **Trabalho teórico (PDF)** | [`docs/teorico/Relatorio_Teorico_Sistema_Automotivo.pdf`](docs/teorico/Relatorio_Teorico_Sistema_Automotivo.pdf) | Levantamento de requisitos, requisitos, entidades, modelo físico, conceitos de POO, arquitetura, tecnologias e, nos apêndices, todo o código do trabalho |
+| **Trabalho prático (PDF)** | [`docs/pratico/Relatorio_Pratico_Sistema_Automotivo.pdf`](docs/pratico/Relatorio_Pratico_Sistema_Automotivo.pdf) | Execução do sistema com prints, código principal e modelo físico (script SQL) |
 | **Evidências (prints)** | [`docs/pratico/prints/`](docs/pratico/prints) | Capturas de tela numeradas: VS Code, execução, página web e banco de dados |
+| **Modelo físico (SQL)** | [`database/modelo_fisico.sql`](database/modelo_fisico.sql) | Script MySQL com tabelas, chaves, restrições e índices |
 | **Código-fonte** | [`src/`](src) | Aplicação Java com Spring Boot (descrita abaixo) |
 | **Vídeo pitch (até 4 min)** | YouTube (não listado) | Link: *a ser inserido após a publicação do vídeo* |
+
+## Relatórios em PDF
+
+Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027 e 6028) e trazem capa, folha de rosto, resumo, abstract, listas, sumário, referências e apêndices.
+
+### Relatório teórico — [`docs/teorico/`](docs/teorico)
+
+| Parte | Conteúdo |
+|---|---|
+| Seções 1 a 3 | Introdução e contextualização do problema; levantamento de requisitos (12 perguntas com respostas simuladas); requisitos funcionais e não funcionais; regras de negócio |
+| Seção 4 | Entidades (`Marca`, `Modelo`, `Veiculo`, `TipoVeiculo`, `StatusVeiculo`), diagrama de classes e **modelo físico** (Quadro 6) |
+| Seção 5 | Conceitos de POO aplicados: classes, encapsulamento, construtores, herança, composição, polimorfismo, abstração, enumerações e exceções |
+| Seções 6 e 7 | Arquitetura em camadas, API REST e justificativa das tecnologias |
+| Apêndices A a I | **Todo o código do trabalho:** A `pom.xml`; B configuração e comandos; C classe principal e enumerações; D modelo (entidades); E repositórios; F serviços; G controladores e exceções; H `index.html`; I **modelo físico (script SQL)** |
+
+### Relatório prático — [`docs/pratico/`](docs/pratico/)
+
+| Parte | Conteúdo |
+|---|---|
+| Seções 2 e 3 | Ambiente, estrutura do projeto e código-fonte principal (`Veiculo`, `VeiculoController`, `VeiculoRepository`, configuração e página web) |
+| Seção 4 | Execução: MySQL, criação do banco e inicialização da aplicação |
+| Seção 5 | Demonstração pela página web: carga de dados, filtros, cadastro, atualização, remoção, validação, marcas e modelos |
+| Seção 6 | Verificação no banco de dados (estrutura da tabela, registros e prova de gravação) |
+| Seção 7 | Repositório no GitHub |
+| Apêndices A e B | A código-fonte principal; B **modelo físico (script SQL)** |
 
 ## Estrutura do repositório
 
@@ -28,6 +54,8 @@ sistema-automotivo-estoque-veiculos/
 │   └── pratico/
 │       ├── Relatorio_Pratico_Sistema_Automotivo.pdf
 │       └── prints/                      (capturas de tela 01 a 24)
+├── database/
+│   └── modelo_fisico.sql                (modelo físico: script de criação das tabelas)
 ├── src/main/java/br/com/estoque/
 │   ├── controller/                      (API REST)
 │   ├── exception/                       (tratamento de erros)
@@ -41,6 +69,22 @@ sistema-automotivo-estoque-veiculos/
 ├── pom.xml
 ├── LICENSE
 └── README.md
+```
+
+## Modelo físico do banco de dados
+
+O script [`database/modelo_fisico.sql`](database/modelo_fisico.sql) cria o banco `estoque_veiculos` e as tabelas `marca`, `modelo` e `veiculo`, com chaves primárias e estrangeiras, restrições de validação (`CHECK`: ano a partir de 1900, preço maior que zero e quilometragem não negativa) e índices de apoio aos filtros. Requer MySQL 8.0.16 ou superior.
+
+| Tabela | Colunas | Chaves e restrições |
+|---|---|---|
+| `marca` | `id`, `nome` | PK `id`; `nome` único |
+| `modelo` | `id`, `nome`, `marca_id` | PK `id`; FK `marca_id` → `marca(id)` |
+| `veiculo` | `id`, `modelo_id`, `tipo`, `ano_fabricacao`, `cor`, `preco`, `quilometragem`, `status` | PK `id`; FK `modelo_id` → `modelo(id)`; `CHECK` de ano, preço e quilometragem |
+
+O uso do script é opcional: ao iniciar, a aplicação cria o mesmo esquema automaticamente (`ddl-auto=update`). Para executá-lo manualmente (atenção: apaga as tabelas existentes e seus dados):
+
+```bash
+sudo mysql < database/modelo_fisico.sql
 ```
 
 ## Tecnologias
