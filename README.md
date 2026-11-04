@@ -12,7 +12,7 @@ Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimen
 
 | Entrega | Onde acessar | Conteúdo |
 |---|---|---|
-| **Trabalho teórico (PDF)** | [`docs/teorico/Relatorio_Teorico_Sistema_Automotivo.pdf`](docs/teorico/Relatorio_Teorico_Sistema_Automotivo.pdf) | Levantamento de requisitos, requisitos, entidades, modelo físico, conceitos de POO, arquitetura, tecnologias e, nos apêndices, todo o código do trabalho |
+| **Trabalho teórico (PDF)** | [`docs/teorico/Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo) | Levantamento de requisitos, requisitos, entidades, modelo físico, conceitos de POO, arquitetura, tecnologias e, nos apêndices, todo o código do trabalho |
 | **Trabalho prático (PDF)** | [`docs/pratico/Relatorio_Pratico_Sistema_Automotivo.pdf`](docs/pratico/Relatorio_Pratico_Sistema_Automotivo.pdf) | Execução do sistema com prints, código principal e modelo físico (script SQL) |
 | **Evidências (prints)** | [`docs/pratico/prints/`](docs/pratico/prints) | Capturas de tela numeradas: VS Code, execução, página web e banco de dados |
 | **Modelo físico (SQL)** | [`database/modelo_fisico.sql`](database/modelo_fisico.sql) | Script MySQL com tabelas, chaves, restrições e índices |
