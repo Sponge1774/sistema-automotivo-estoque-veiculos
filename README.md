@@ -17,6 +17,7 @@ Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimen
 | **Evidências (prints)** | [`Fotos e Prints`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints) | Capturas de tela numeradas: VS Code, execução, página web e banco de dados |
 | **Modelo físico (SQL)** | [`modelo_fisico.sql`](modelo_fisico.sql) | Script MySQL com tabelas, chaves, restrições e índices |
 | **Código-fonte** | [`src/`](src) | Aplicação Java com Spring Boot (descrita abaixo) |
+| **Configuração do projeto (Maven)** | [`pom.xml`](pom.xml) | Dependências (Spring Web, Spring Data JPA, Validation, driver do MySQL) e versão do Java (17) |
 | **Vídeo pitch (até 4 min)** | YouTube (não listado) | Link: *a ser inserido após a publicação do vídeo* |
 
 ## Relatórios em PDF
@@ -58,13 +59,13 @@ Cada figura do relatório prático foi gerada a partir de um destes prints.
 |---|---|---|
 | Parte A | [`print1.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print1.png) | Terminal do VS Code com as versões do Java 17 e do Maven |
 | Parte A | [`print2.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print2.png) | Explorador do VS Code com a estrutura do projeto |
-| Parte A | [`print3.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print3.png) | Veiculo.java (início): herança, atributos privados e anotações |
+| Parte A | [`print3A.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print3A.png) | Veiculo.java (início): herança, atributos privados e anotações |
 | Parte A | [`print3B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print3B.png) | Veiculo.java (meio): construtores e validação do ano |
-| Parte A | [`print4.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print4.png) | VeiculoController.java (início): listagem com filtros e cadastro |
+| Parte A | [`print4A.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print4A.png) | VeiculoController.java (início): listagem com filtros e cadastro |
 | Parte A | [`print4B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print4B.png) | VeiculoController.java (final): busca, atualização e remoção |
 | Parte A | [`print5.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print5.png) | VeiculoRepository.java: consulta JPQL com filtros opcionais |
 | Parte A | [`print6.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print6.png) | application.properties: conexão com o MySQL |
-| Parte A | [`print7.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print7.png) | index.html: estrutura da página |
+| Parte A | [`print7A.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print7A.png) | index.html: estrutura da página |
 | Parte A | [`print7B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A/print7B.png) | index.html: JavaScript que consome a API |
 | Parte B | [`print8.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B/print8.png) | Serviço do MySQL ativo |
 | Parte B | [`print9.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B/print9.png) | Criação do banco estoque_veiculos |
@@ -79,7 +80,7 @@ Cada figura do relatório prático foi gerada a partir de um destes prints.
 | Parte C | [`print17.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print17.png) | Atualização de veículo (Update) |
 | Parte C | [`print18.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print18.png) | Remoção de veículo (Delete) |
 | Parte C | [`print19.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print19.png) | Validação: preço negativo recusado |
-| Parte C | [`print20.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print20.png) | Aba Marcas |
+| Parte C | [`print20A.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print20A.png) | Aba Marcas |
 | Parte C | [`print20B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print20B.png) | Aba Modelos |
 | Parte C | [`print21.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print21.png) | DESCRIBE veiculo no MySQL |
 | Parte C | [`print22.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print22.png) | Consulta com JOIN: os 6 veículos gravados |
@@ -175,7 +176,7 @@ FLUSH PRIVILEGES;
 ```
 
 2. Confira usuário e senha em `src/main/resources/application.properties`.
-3. Inicie o sistema:
+3. Inicie o sistema (o Maven lê as dependências do [`pom.xml`](pom.xml) e as baixa automaticamente):
 
 ```bash
 mvn spring-boot:run
