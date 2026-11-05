@@ -51,7 +51,7 @@ Capturas de tela da execução real do sistema, organizadas em três partes, na 
 
 - [**Parte A**](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20A): ambiente, estrutura do projeto e código-fonte no VS Code (prints 1 a 7B);
 - [**Parte B**](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20B): MySQL, criação do banco e inicialização da aplicação (prints 8 a 11);
-- [**Parte C**](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C): uso da página web e verificação no banco de dados (prints 12 a 23B).
+- [**Parte C**](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C): uso da página web e verificação no banco de dados (prints 12 a 24).
 
 Cada figura do relatório prático foi gerada a partir de um destes prints.
 
@@ -86,6 +86,7 @@ Cada figura do relatório prático foi gerada a partir de um destes prints.
 | Parte C | [`print22.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print22.png) | Consulta com JOIN: os 6 veículos gravados |
 | Parte C | [`print23A.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print23A.png) | Página após editar o preço do Corolla |
 | Parte C | [`print23B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print23B.png) | Consulta no banco confirmando o novo preço |
+| Parte C | [`print24.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print24.png) | Página pública do repositório no GitHub |
 
 ## Estrutura do repositório
 
@@ -95,7 +96,7 @@ sistema-automotivo-estoque-veiculos/
 │   └── Fotos e Prints/
 │       ├── Parte A/                     (prints 1 a 7B: ambiente e código no VS Code)
 │       ├── Parte B/                     (prints 8 a 11: MySQL e inicialização)
-│       └── Parte C/                     (prints 12 a 23B: página web e banco de dados)
+│       └── Parte C/                     (prints 12 a 24: página web, banco de dados e repositório)
 ├── src/main/java/br/com/estoque/
 │   ├── controller/                      (API REST)
 │   ├── exception/                       (tratamento de erros)
