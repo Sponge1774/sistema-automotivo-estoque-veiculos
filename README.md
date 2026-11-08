@@ -18,7 +18,7 @@ Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimen
 | **Modelo físico (SQL)** | [`modelo_fisico.sql`](modelo_fisico.sql) | Script MySQL com tabelas, chaves, restrições e índices |
 | **Código-fonte** | [`src/`](src) | Aplicação Java com Spring Boot (descrita abaixo) |
 | **Configuração do projeto (Maven)** | [`pom.xml`](pom.xml) | Dependências (Spring Web, Spring Data JPA, Validation, driver do MySQL) e versão do Java (17) |
-| **Vídeo pitch (até 4 min)** | YouTube (não listado) | Link: *a ser inserido após a publicação do vídeo* |
+| **Vídeo pitch (até 4 min)** | [YouTube (não listado)](https://youtu.be/6x1J-7Rtt4I) | Link: <https://youtu.be/6x1J-7Rtt4I> |
 
 ## Relatórios em PDF
 
