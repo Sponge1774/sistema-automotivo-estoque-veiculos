@@ -141,6 +141,10 @@ sudo mysql < modelo_fisico.sql
 - Maven
 - HTML, CSS e JavaScript (interface web, servida pelo próprio sistema)
 
+## Ambiente de desenvolvimento
+
+O sistema foi desenvolvido e testado em um notebook Samsung Expert (2018), com o sistema operacional Pop!_OS (Linux) e o editor Visual Studio Code (extensões Java e Spring Boot). Versões utilizadas: OpenJDK 17.0.20.1, Apache Maven 3.8.7 e Spring Boot 3.4.5.
+
 ## Arquitetura (MVC / camadas)
 
 | Pacote | Função |
@@ -165,9 +169,9 @@ sudo mysql < modelo_fisico.sql
 
 ## Como executar
 
-**Requisitos:** Java 17, Maven 3.8 ou superior e MySQL 8.
+**Requisitos:** Java 17, Maven 3.8 ou superior e MySQL 8, com o serviço do MySQL ativo (`sudo systemctl status mysql`).
 
-1. Crie o banco e o usuário no MySQL (a senha abaixo é apenas de teste, para uso local):
+1. Crie o banco e o usuário no MySQL, com usuário administrador (`sudo mysql`). A senha abaixo é apenas de teste, para uso local:
 
 ```sql
 CREATE DATABASE estoque_veiculos CHARACTER SET utf8mb4;
@@ -176,16 +180,35 @@ GRANT ALL PRIVILEGES ON estoque_veiculos.* TO 'estoque'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-2. Confira usuário e senha em `src/main/resources/application.properties`.
-3. Inicie o sistema (o Maven lê as dependências do [`pom.xml`](pom.xml) e as baixa automaticamente):
+   Para recomeçar com o banco vazio (o usuário `estoque` é mantido):
 
 ```bash
+sudo mysql -e "DROP DATABASE IF EXISTS estoque_veiculos; CREATE DATABASE estoque_veiculos CHARACTER SET utf8mb4;"
+```
+
+> **Atenção:** o comando `DROP DATABASE` remove todos os dados do banco. Use-o apenas em ambiente de desenvolvimento e teste.
+
+2. Confira usuário e senha em `src/main/resources/application.properties`.
+3. Entre na **pasta raiz do projeto**, onde se encontra o arquivo [`pom.xml`](pom.xml), e inicie o sistema (o Maven lê as dependências do `pom.xml` e as baixa automaticamente):
+
+```bash
+cd sistema-automotivo-estoque-veiculos
+ls pom.xml
 mvn spring-boot:run
 ```
 
 4. Acesse `http://localhost:8080` no navegador. As tabelas são criadas automaticamente na primeira execução.
+5. Para encerrar, pressione `Ctrl + C` no terminal em que a aplicação foi iniciada.
 
 > Se o Maven indicar `release version 17 not supported`, o Java padrão da máquina não é o 17. Ajuste-o antes de executar.
+
+### Problemas comuns
+
+| Mensagem | Causa | Solução |
+|---|---|---|
+| `No plugin found for prefix 'spring-boot'` | O comando `mvn spring-boot:run` foi executado fora da pasta do projeto | Entrar na pasta que contém o `pom.xml` (`cd`) e executar novamente |
+| `Port 8080 was already in use` | Já existe uma instância da aplicação em execução | Encerrar a instância anterior: `Ctrl + C` no terminal dela ou, se não souber onde está, `lsof -i :8080` e `kill <PID>`. Também é possível usar outra porta: `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081` |
+| Falha de conexão com o banco | MySQL parado, ou banco e usuário inexistentes | Verificar `sudo systemctl status mysql` e refazer o passo 1 |
 
 ## Interface web
 
