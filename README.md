@@ -30,7 +30,7 @@ Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027
 |---|---|
 | Seções 1 a 3 | Introdução e contextualização do problema; levantamento de requisitos (12 perguntas com respostas simuladas); requisitos funcionais e não funcionais; regras de negócio |
 | Seção 4 | Entidades (`Marca`, `Modelo`, `Veiculo`, `TipoVeiculo`, `StatusVeiculo`), diagrama de classes e **modelo físico** (Quadro 6) |
-| Seção 5 | Conceitos de POO aplicados: classes, encapsulamento, construtores, herança, composição, polimorfismo, abstração, enumerações e exceções |
+| Seção 5 | Conceitos de POO aplicados: classes, encapsulamento, construtores, herança, composição, polimorfismo, abstração, enumerações, exceções, estruturas de dados e algoritmos |
 | Seções 6 e 7 | Arquitetura em camadas, API REST e justificativa das tecnologias |
 | Apêndices A a I | **Todo o código do trabalho:** A `pom.xml`; B configuração e comandos; C classe principal e enumerações; D modelo (entidades); E repositórios; F serviços; G controladores e exceções; H `index.html`; I **modelo físico (script SQL)** |
 
