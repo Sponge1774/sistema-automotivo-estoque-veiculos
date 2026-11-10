@@ -1,14 +1,20 @@
 # Sistema Automotivo – Gestão de Estoque de Veículos
+# Automotive System – Vehicle Inventory Management
 
-Sistema CRUD orientado a objetos para gerenciar o estoque de veículos de uma concessionária: cadastro, consulta com filtros, atualização e remoção de veículos, marcas e modelos, com API REST e interface web.
+**Português:** Sistema CRUD orientado a objetos para gerenciar o estoque de veículos de uma concessionária: cadastro, consulta com filtros, atualização e remoção de veículos, marcas e modelos, com API REST e interface web. Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimento de Sistemas – UniFECAF).
 
-Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimento de Sistemas – UniFECAF).
+**English:** Object-oriented CRUD system to manage the vehicle inventory of a car dealership: registration, filtered search, update and removal of vehicles, brands and models, with a REST API and a web interface. Project for the course **Object Oriented Programming** (Systems Analysis and Development – UniFECAF).
 
-**Autor:** Eduardo Souza Mattos – R.A. 35984
+**Autor / Author:** Eduardo Souza Mattos – R.A. / Student ID 35984
+
+> **Português:** os relatórios, os identificadores do código e a interface web estão em português do Brasil. Cada seção abaixo aparece em português e, em seguida, em inglês.
+> **English:** the reports, code identifiers and web interface are in Brazilian Portuguese. Each section below appears in Portuguese, followed by English.
 
 ---
 
-## Entregas do trabalho
+## Entregas do trabalho / Deliverables
+
+**Português**
 
 | Entrega | Onde acessar | Conteúdo |
 |---|---|---|
@@ -20,7 +26,23 @@ Trabalho da disciplina **Object Oriented Programming** (Análise e Desenvolvimen
 | **Configuração do projeto (Maven)** | [`pom.xml`](pom.xml) | Dependências (Spring Web, Spring Data JPA, Validation, driver do MySQL) e versão do Java (17) |
 | **Vídeo pitch (até 4 min)** | [YouTube (não listado)](https://youtu.be/6x1J-7Rtt4I) | Link: <https://youtu.be/6x1J-7Rtt4I> |
 
-## Relatórios em PDF
+**English**
+
+| Deliverable | Where to find it | Content |
+|---|---|---|
+| **Theoretical report (PDF)** | [`Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo.pdf) | Requirements elicitation, requirements, entities, physical model, OOP concepts, architecture, technologies and, in the appendices, all the code of the project |
+| **Practical report (PDF)** | [`Relatorio_Pratico_Sistema_Automotivo.pdf`](Relatorio_Pratico_Sistema_Automotivo.pdf) | System execution with screenshots, main code and physical model (SQL script) |
+| **Evidence (screenshots)** | [`Fotos e Prints`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints) | Numbered screenshots: VS Code, execution, web page and database |
+| **Physical model (SQL)** | [`modelo_fisico.sql`](modelo_fisico.sql) | MySQL script with tables, keys, constraints and indexes |
+| **Source code** | [`src/`](src) | Java application with Spring Boot (described below) |
+| **Project configuration (Maven)** | [`pom.xml`](pom.xml) | Dependencies (Spring Web, Spring Data JPA, Validation, MySQL driver) and Java version (17) |
+| **Pitch video (up to 4 min)** | [YouTube (unlisted)](https://youtu.be/6x1J-7Rtt4I) | Link: <https://youtu.be/6x1J-7Rtt4I> |
+
+---
+
+## Relatórios em PDF / PDF reports
+
+**Português**
 
 Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027 e 6028) e trazem capa, folha de rosto, resumo, abstract, listas, sumário, referências e apêndices.
 
@@ -45,7 +67,36 @@ Os dois relatórios seguem as normas da ABNT (NBR 14724, 10520, 6023, 6024, 6027
 | Seção 7 | Repositório no GitHub |
 | Apêndices A e B | A código-fonte principal; B **modelo físico (script SQL)** |
 
-## Evidências: pasta de prints
+**English**
+
+Both reports follow the Brazilian ABNT standards (NBR 14724, 10520, 6023, 6024, 6027 and 6028) and include cover, title page, abstract (in Portuguese and English), lists, table of contents, references and appendices.
+
+### Theoretical report — [`Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo.pdf)
+
+| Part | Content |
+|---|---|
+| Sections 1 to 3 | Introduction and problem context; requirements elicitation (12 questions with simulated answers); functional and non-functional requirements; business rules |
+| Section 4 | Entities (`Marca`, `Modelo`, `Veiculo`, `TipoVeiculo`, `StatusVeiculo`), class diagram and **physical model** (Table 6) |
+| Section 5 | OOP concepts applied: classes, encapsulation, constructors, inheritance, composition, polymorphism, abstraction, enumerations, exceptions, data structures and algorithms |
+| Sections 6 and 7 | Layered architecture, REST API and justification of the technologies |
+| Appendices A to I | **All the code of the project:** A `pom.xml`; B configuration and commands; C main class and enumerations; D model (entities); E repositories; F services; G controllers and exceptions; H `index.html`; I **physical model (SQL script)** |
+
+### Practical report — [`Relatorio_Pratico_Sistema_Automotivo.pdf`](Relatorio_Pratico_Sistema_Automotivo.pdf)
+
+| Part | Content |
+|---|---|
+| Sections 2 and 3 | Environment, project structure and main source code (`Veiculo`, `VeiculoController`, `VeiculoRepository`, configuration and web page) |
+| Section 4 | Execution: MySQL, database creation and application startup |
+| Section 5 | Web page demonstration: sample data, filters, registration, update, removal, validation, brands and models |
+| Section 6 | Database verification (table structure, records and proof of persistence) |
+| Section 7 | GitHub repository |
+| Appendices A and B | A main source code; B **physical model (SQL script)** |
+
+---
+
+## Evidências: pasta de prints / Evidence: screenshots folder
+
+**Português**
 
 Capturas de tela da execução real do sistema, organizadas em três partes, na pasta [`Fotos e Prints`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints):
 
@@ -88,222 +139,7 @@ Cada figura do relatório prático foi gerada a partir de um destes prints.
 | Parte C | [`print23B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print23B.png) | Consulta no banco confirmando o novo preço |
 | Parte C | [`print24.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print24.png) | Página pública do repositório no GitHub |
 
-## Estrutura do repositório
-
-```
-sistema-automotivo-estoque-veiculos/
-├── Fotos e Prints-20261104T012307Z-1-001/
-│   └── Fotos e Prints/
-│       ├── Parte A/                     (prints 1 a 7B: ambiente e código no VS Code)
-│       ├── Parte B/                     (prints 8 a 11: MySQL e inicialização)
-│       └── Parte C/                     (prints 12 a 24: página web, banco de dados e repositório)
-├── src/main/java/br/com/estoque/
-│   ├── controller/                      (API REST)
-│   ├── exception/                       (tratamento de erros)
-│   ├── model/                           (entidades e enumerações)
-│   ├── repository/                      (acesso ao banco)
-│   ├── service/                         (regras de negócio)
-│   └── EstoqueApplication.java
-├── src/main/resources/
-│   ├── application.properties           (conexão com o MySQL)
-│   └── static/index.html                (interface web)
-├── Relatorio_Teorico_Sistema_Automotivo.pdf
-├── Relatorio_Pratico_Sistema_Automotivo.pdf
-├── modelo_fisico.sql                    (modelo físico: script de criação das tabelas)
-├── pom.xml
-├── LICENSE
-└── README.md                            (português e inglês)
-```
-
-## Modelo físico do banco de dados
-
-O script [`modelo_fisico.sql`](modelo_fisico.sql) cria o banco `estoque_veiculos` e as tabelas `marca`, `modelo` e `veiculo`, com chaves primárias e estrangeiras, restrições de validação (`CHECK`: ano a partir de 1900, preço maior que zero e quilometragem não negativa) e índices de apoio aos filtros. Requer MySQL 8.0.16 ou superior.
-
-| Tabela | Colunas | Chaves e restrições |
-|---|---|---|
-| `marca` | `id`, `nome` | PK `id`; `nome` único |
-| `modelo` | `id`, `nome`, `marca_id` | PK `id`; FK `marca_id` → `marca(id)` |
-| `veiculo` | `id`, `modelo_id`, `tipo`, `ano_fabricacao`, `cor`, `preco`, `quilometragem`, `status` | PK `id`; FK `modelo_id` → `modelo(id)`; `CHECK` de ano, preço e quilometragem |
-
-O uso do script é opcional: ao iniciar, a aplicação cria o mesmo esquema automaticamente (`ddl-auto=update`). Para executá-lo manualmente (atenção: apaga as tabelas existentes e seus dados):
-
-```bash
-sudo mysql < modelo_fisico.sql
-```
-
-## Tecnologias
-
-- Java 17
-- Spring Boot 3 (Spring Web – API REST)
-- Spring Data JPA / Hibernate
-- Bean Validation
-- MySQL 8
-- Maven
-- HTML, CSS e JavaScript (interface web, servida pelo próprio sistema)
-
-## Ambiente de desenvolvimento
-
-O sistema foi desenvolvido e testado em um notebook Samsung Expert (2018), com o sistema operacional Pop!_OS (Linux) e o editor Visual Studio Code (extensões Java e Spring Boot). Versões utilizadas: OpenJDK 17.0.20.1, Apache Maven 3.8.7 e Spring Boot 3.4.5.
-
-## Arquitetura (MVC / camadas)
-
-| Pacote | Função |
-|---|---|
-| `model` | Entidades `Marca`, `Modelo` e `Veiculo` (herdam de `EntidadeBase`) e enumerações `TipoVeiculo` e `StatusVeiculo` |
-| `repository` | Acesso ao banco de dados (Spring Data JPA), incluindo a consulta com filtros opcionais |
-| `service` | Regras de negócio |
-| `controller` | Endpoints da API REST |
-| `exception` | Tratamento de erros, com resposta em JSON |
-
-## Conceitos de Programação Orientada a Objetos aplicados
-
-| Conceito | Onde aparece |
-|---|---|
-| **Encapsulamento** | Atributos `private` em `Veiculo`, com getters e setters que validam as regras (preço maior que zero, quilometragem não negativa, ano entre 1900 e o ano seguinte) |
-| **Herança** | `Marca`, `Modelo` e `Veiculo` herdam de `EntidadeBase` (identificador comum) |
-| **Composição** | `Veiculo` possui um `Modelo`, e `Modelo` possui uma `Marca` |
-| **Sobrecarga de construtores** | `Veiculo` com construtor sem argumentos (exigido pelo JPA) e construtor com os dados principais |
-| **Enumerações** | `TipoVeiculo` (CARRO, MOTO, CAMINHAO) e `StatusVeiculo` (DISPONIVEL, RESERVADO, VENDIDO) |
-| **Abstração e polimorfismo** | Repositórios como interfaces que estendem `JpaRepository`, com implementação gerada pelo Spring |
-| **Tratamento de exceções** | Exceções próprias (`RecursoNaoEncontradoException`, `RegraDeNegocioException`) e `TratadorDeErros` |
-
-## Como executar
-
-**Requisitos:** Java 17, Maven 3.8 ou superior e MySQL 8, com o serviço do MySQL ativo (`sudo systemctl status mysql`).
-
-1. Crie o banco e o usuário no MySQL, com usuário administrador (`sudo mysql`). A senha abaixo é apenas de teste, para uso local:
-
-```sql
-CREATE DATABASE estoque_veiculos CHARACTER SET utf8mb4;
-CREATE USER 'estoque'@'localhost' IDENTIFIED BY 'Estoque@2026';
-GRANT ALL PRIVILEGES ON estoque_veiculos.* TO 'estoque'@'localhost';
-FLUSH PRIVILEGES;
-```
-
-   Para recomeçar com o banco vazio (o usuário `estoque` é mantido):
-
-```bash
-sudo mysql -e "DROP DATABASE IF EXISTS estoque_veiculos; CREATE DATABASE estoque_veiculos CHARACTER SET utf8mb4;"
-```
-
-> **Atenção:** o comando `DROP DATABASE` remove todos os dados do banco. Use-o apenas em ambiente de desenvolvimento e teste.
-
-2. Confira usuário e senha em `src/main/resources/application.properties`.
-3. Entre na **pasta raiz do projeto**, onde se encontra o arquivo [`pom.xml`](pom.xml), e inicie o sistema (o Maven lê as dependências do `pom.xml` e as baixa automaticamente):
-
-```bash
-cd sistema-automotivo-estoque-veiculos
-ls pom.xml
-mvn spring-boot:run
-```
-
-4. Acesse `http://localhost:8080` no navegador. As tabelas são criadas automaticamente na primeira execução.
-5. Para encerrar, pressione `Ctrl + C` no terminal em que a aplicação foi iniciada.
-
-> Se o Maven indicar `release version 17 not supported`, o Java padrão da máquina não é o 17. Ajuste-o antes de executar.
-
-### Problemas comuns
-
-| Mensagem | Causa | Solução |
-|---|---|---|
-| `No plugin found for prefix 'spring-boot'` | O comando `mvn spring-boot:run` foi executado fora da pasta do projeto | Entrar na pasta que contém o `pom.xml` (`cd`) e executar novamente |
-| `Port 8080 was already in use` | Já existe uma instância da aplicação em execução | Encerrar a instância anterior: `Ctrl + C` no terminal dela ou, se não souber onde está, `lsof -i :8080` e `kill <PID>`. Também é possível usar outra porta: `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081` |
-| Falha de conexão com o banco | MySQL parado, ou banco e usuário inexistentes | Verificar `sudo systemctl status mysql` e refazer o passo 1 |
-
-## Interface web
-
-Com o sistema ligado, a página `http://localhost:8080` permite:
-
-- cadastrar, editar e remover veículos, marcas e modelos;
-- consultar veículos com filtros por marca, modelo, faixa de preço, ano, situação e tipo;
-- carregar dados de exemplo (botão **Carregar dados de exemplo**), para demonstração.
-
-## API REST
-
-| Operação | Método | Caminho |
-|---|---|---|
-| Listar / filtrar veículos | GET | `/api/veiculos` |
-| Buscar veículo | GET | `/api/veiculos/{id}` |
-| Cadastrar veículo | POST | `/api/veiculos` |
-| Atualizar veículo | PUT | `/api/veiculos/{id}` |
-| Remover veículo | DELETE | `/api/veiculos/{id}` |
-| Marcas | GET, POST, PUT, DELETE | `/api/marcas` |
-| Modelos | GET, POST, PUT, DELETE | `/api/modelos` |
-
-Filtros de `GET /api/veiculos` (todos opcionais): `marca`, `modelo`, `precoMin`, `precoMax`, `ano`, `status` (`DISPONIVEL`, `RESERVADO`, `VENDIDO`) e `tipo` (`CARRO`, `MOTO`, `CAMINHAO`).
-
-Exemplo de consulta com filtros:
-
-```bash
-curl "http://localhost:8080/api/veiculos?marca=Honda&status=VENDIDO"
-```
-
-Exemplo de cadastro:
-
-```bash
-curl -X POST http://localhost:8080/api/veiculos \
-  -H "Content-Type: application/json" \
-  -d '{"modelo":{"id":1},"tipo":"CARRO","anoFabricacao":2022,"cor":"Prata","preco":120000.00,"quilometragem":15000,"status":"DISPONIVEL"}'
-```
-
-Dados inválidos (por exemplo, preço negativo) são recusados com resposta `400` e mensagem em JSON.
-
-## Licença
-
-Distribuído sob a licença MIT. Consulte o arquivo [`LICENSE`](LICENSE).
-
----
-
-# Automotive System – Vehicle Inventory Management
-
-Object-oriented CRUD system to manage the vehicle inventory of a car dealership: registration, filtered search, update and removal of vehicles, brands and models, with a REST API and a web interface.
-
-Project for the course **Object Oriented Programming** (Systems Analysis and Development – UniFECAF).
-
-**Author:** Eduardo Souza Mattos – Student ID (R.A.) 35984
-
-> The reports, source code identifiers and the web interface are in Brazilian Portuguese. File and class names (for example `Veiculo`, `Marca`, `Modelo`) are kept as in the repository.
-
----
-
-## Deliverables
-
-| Deliverable | Where to find it | Content |
-|---|---|---|
-| **Theoretical report (PDF)** | [`Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo.pdf) | Requirements elicitation, requirements, entities, physical model, OOP concepts, architecture, technologies and, in the appendices, all the code of the project |
-| **Practical report (PDF)** | [`Relatorio_Pratico_Sistema_Automotivo.pdf`](Relatorio_Pratico_Sistema_Automotivo.pdf) | System execution with screenshots, main code and physical model (SQL script) |
-| **Evidence (screenshots)** | [`Fotos e Prints`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints) | Numbered screenshots: VS Code, execution, web page and database |
-| **Physical model (SQL)** | [`modelo_fisico.sql`](modelo_fisico.sql) | MySQL script with tables, keys, constraints and indexes |
-| **Source code** | [`src/`](src) | Java application with Spring Boot (described below) |
-| **Project configuration (Maven)** | [`pom.xml`](pom.xml) | Dependencies (Spring Web, Spring Data JPA, Validation, MySQL driver) and Java version (17) |
-| **Pitch video (up to 4 min)** | [YouTube (unlisted)](https://youtu.be/6x1J-7Rtt4I) | Link: <https://youtu.be/6x1J-7Rtt4I> |
-
-## PDF reports
-
-Both reports follow the Brazilian ABNT standards (NBR 14724, 10520, 6023, 6024, 6027 and 6028) and include cover, title page, abstract (in Portuguese and English), lists, table of contents, references and appendices.
-
-### Theoretical report — [`Relatorio_Teorico_Sistema_Automotivo.pdf`](Relatorio_Teorico_Sistema_Automotivo.pdf)
-
-| Part | Content |
-|---|---|
-| Sections 1 to 3 | Introduction and problem context; requirements elicitation (12 questions with simulated answers); functional and non-functional requirements; business rules |
-| Section 4 | Entities (`Marca`, `Modelo`, `Veiculo`, `TipoVeiculo`, `StatusVeiculo`), class diagram and **physical model** (Table 6) |
-| Section 5 | OOP concepts applied: classes, encapsulation, constructors, inheritance, composition, polymorphism, abstraction, enumerations, exceptions, data structures and algorithms |
-| Sections 6 and 7 | Layered architecture, REST API and justification of the technologies |
-| Appendices A to I | **All the code of the project:** A `pom.xml`; B configuration and commands; C main class and enumerations; D model (entities); E repositories; F services; G controllers and exceptions; H `index.html`; I **physical model (SQL script)** |
-
-### Practical report — [`Relatorio_Pratico_Sistema_Automotivo.pdf`](Relatorio_Pratico_Sistema_Automotivo.pdf)
-
-| Part | Content |
-|---|---|
-| Sections 2 and 3 | Environment, project structure and main source code (`Veiculo`, `VeiculoController`, `VeiculoRepository`, configuration and web page) |
-| Section 4 | Execution: MySQL, database creation and application startup |
-| Section 5 | Web page demonstration: sample data, filters, registration, update, removal, validation, brands and models |
-| Section 6 | Database verification (table structure, records and proof of persistence) |
-| Section 7 | GitHub repository |
-| Appendices A and B | A main source code; B **physical model (SQL script)** |
-
-## Evidence: screenshots folder
+**English**
 
 Screenshots of the real execution of the system, organized in three parts, in the folder [`Fotos e Prints`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints):
 
@@ -346,7 +182,38 @@ Each figure of the practical report was generated from one of these screenshots.
 | Part C | [`print23B.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print23B.png) | Database query confirming the new price |
 | Part C | [`print24.png`](Fotos%20e%20Prints-20261104T012307Z-1-001/Fotos%20e%20Prints/Parte%20C/print24.png) | Public GitHub repository page |
 
-## Repository structure
+---
+
+## Estrutura do repositório / Repository structure
+
+**Português**
+
+```
+sistema-automotivo-estoque-veiculos/
+├── Fotos e Prints-20261104T012307Z-1-001/
+│   └── Fotos e Prints/
+│       ├── Parte A/                     (prints 1 a 7B: ambiente e código no VS Code)
+│       ├── Parte B/                     (prints 8 a 11: MySQL e inicialização)
+│       └── Parte C/                     (prints 12 a 24: página web, banco de dados e repositório)
+├── src/main/java/br/com/estoque/
+│   ├── controller/                      (API REST)
+│   ├── exception/                       (tratamento de erros)
+│   ├── model/                           (entidades e enumerações)
+│   ├── repository/                      (acesso ao banco)
+│   ├── service/                         (regras de negócio)
+│   └── EstoqueApplication.java
+├── src/main/resources/
+│   ├── application.properties           (conexão com o MySQL)
+│   └── static/index.html                (interface web)
+├── Relatorio_Teorico_Sistema_Automotivo.pdf
+├── Relatorio_Pratico_Sistema_Automotivo.pdf
+├── modelo_fisico.sql                    (modelo físico: script de criação das tabelas)
+├── pom.xml
+├── LICENSE
+└── README.md                            (português e inglês)
+```
+
+**English**
 
 ```
 sistema-automotivo-estoque-veiculos/
@@ -373,7 +240,27 @@ sistema-automotivo-estoque-veiculos/
 └── README.md                            (Portuguese and English)
 ```
 
-## Database physical model
+---
+
+## Modelo físico do banco de dados / Database physical model
+
+**Português**
+
+O script [`modelo_fisico.sql`](modelo_fisico.sql) cria o banco `estoque_veiculos` e as tabelas `marca`, `modelo` e `veiculo`, com chaves primárias e estrangeiras, restrições de validação (`CHECK`: ano a partir de 1900, preço maior que zero e quilometragem não negativa) e índices de apoio aos filtros. Requer MySQL 8.0.16 ou superior.
+
+| Tabela | Colunas | Chaves e restrições |
+|---|---|---|
+| `marca` | `id`, `nome` | PK `id`; `nome` único |
+| `modelo` | `id`, `nome`, `marca_id` | PK `id`; FK `marca_id` → `marca(id)` |
+| `veiculo` | `id`, `modelo_id`, `tipo`, `ano_fabricacao`, `cor`, `preco`, `quilometragem`, `status` | PK `id`; FK `modelo_id` → `modelo(id)`; `CHECK` de ano, preço e quilometragem |
+
+O uso do script é opcional: ao iniciar, a aplicação cria o mesmo esquema automaticamente (`ddl-auto=update`). Para executá-lo manualmente (atenção: apaga as tabelas existentes e seus dados):
+
+```bash
+sudo mysql < modelo_fisico.sql
+```
+
+**English**
 
 The script [`modelo_fisico.sql`](modelo_fisico.sql) creates the `estoque_veiculos` database and the `marca`, `modelo` and `veiculo` tables, with primary and foreign keys, validation constraints (`CHECK`: year from 1900 on, price greater than zero and non-negative mileage) and indexes that support the search filters. It requires MySQL 8.0.16 or later.
 
@@ -389,7 +276,21 @@ Using the script is optional: on startup, the application creates the same schem
 sudo mysql < modelo_fisico.sql
 ```
 
-## Technologies
+---
+
+## Tecnologias / Technologies
+
+**Português**
+
+- Java 17
+- Spring Boot 3 (Spring Web – API REST)
+- Spring Data JPA / Hibernate
+- Bean Validation
+- MySQL 8
+- Maven
+- HTML, CSS e JavaScript (interface web, servida pelo próprio sistema)
+
+**English**
 
 - Java 17
 - Spring Boot 3 (Spring Web – REST API)
@@ -399,11 +300,33 @@ sudo mysql < modelo_fisico.sql
 - Maven
 - HTML, CSS and JavaScript (web interface, served by the system itself)
 
-## Development environment
+---
+
+## Ambiente de desenvolvimento / Development environment
+
+**Português**
+
+O sistema foi desenvolvido e testado em um notebook Samsung Expert (2018), com o sistema operacional Pop!_OS (Linux) e o editor Visual Studio Code (extensões Java e Spring Boot). Versões utilizadas: OpenJDK 17.0.20.1, Apache Maven 3.8.7 e Spring Boot 3.4.5.
+
+**English**
 
 The system was developed and tested on a Samsung Expert laptop (2018), running Pop!_OS (Linux) and Visual Studio Code (Java and Spring Boot extensions). Versions used: OpenJDK 17.0.20.1, Apache Maven 3.8.7 and Spring Boot 3.4.5.
 
-## Architecture (MVC / layers)
+---
+
+## Arquitetura (MVC / camadas) / Architecture (MVC / layers)
+
+**Português**
+
+| Pacote | Função |
+|---|---|
+| `model` | Entidades `Marca`, `Modelo` e `Veiculo` (herdam de `EntidadeBase`) e enumerações `TipoVeiculo` e `StatusVeiculo` |
+| `repository` | Acesso ao banco de dados (Spring Data JPA), incluindo a consulta com filtros opcionais |
+| `service` | Regras de negócio |
+| `controller` | Endpoints da API REST |
+| `exception` | Tratamento de erros, com resposta em JSON |
+
+**English**
 
 | Package | Role |
 |---|---|
@@ -413,7 +336,23 @@ The system was developed and tested on a Samsung Expert laptop (2018), running P
 | `controller` | REST API endpoints |
 | `exception` | Error handling, with JSON responses |
 
-## Object-oriented programming concepts applied
+---
+
+## Conceitos de Programação Orientada a Objetos aplicados / Object-oriented programming concepts applied
+
+**Português**
+
+| Conceito | Onde aparece |
+|---|---|
+| **Encapsulamento** | Atributos `private` em `Veiculo`, com getters e setters que validam as regras (preço maior que zero, quilometragem não negativa, ano entre 1900 e o ano seguinte) |
+| **Herança** | `Marca`, `Modelo` e `Veiculo` herdam de `EntidadeBase` (identificador comum) |
+| **Composição** | `Veiculo` possui um `Modelo`, e `Modelo` possui uma `Marca` |
+| **Sobrecarga de construtores** | `Veiculo` com construtor sem argumentos (exigido pelo JPA) e construtor com os dados principais |
+| **Enumerações** | `TipoVeiculo` (CARRO, MOTO, CAMINHAO) e `StatusVeiculo` (DISPONIVEL, RESERVADO, VENDIDO) |
+| **Abstração e polimorfismo** | Repositórios como interfaces que estendem `JpaRepository`, com implementação gerada pelo Spring |
+| **Tratamento de exceções** | Exceções próprias (`RecursoNaoEncontradoException`, `RegraDeNegocioException`) e `TratadorDeErros` |
+
+**English**
 
 | Concept | Where it appears |
 |---|---|
@@ -425,7 +364,54 @@ The system was developed and tested on a Samsung Expert laptop (2018), running P
 | **Abstraction and polymorphism** | Repositories as interfaces that extend `JpaRepository`, with the implementation generated by Spring |
 | **Exception handling** | Custom exceptions (`RecursoNaoEncontradoException`, `RegraDeNegocioException`) and `TratadorDeErros` |
 
-## How to run
+---
+
+## Como executar / How to run
+
+**Português**
+
+**Requisitos:** Java 17, Maven 3.8 ou superior e MySQL 8, com o serviço do MySQL ativo (`sudo systemctl status mysql`).
+
+1. Crie o banco e o usuário no MySQL, com usuário administrador (`sudo mysql`). A senha abaixo é apenas de teste, para uso local:
+
+```sql
+CREATE DATABASE estoque_veiculos CHARACTER SET utf8mb4;
+CREATE USER 'estoque'@'localhost' IDENTIFIED BY 'Estoque@2026';
+GRANT ALL PRIVILEGES ON estoque_veiculos.* TO 'estoque'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+   Para recomeçar com o banco vazio (o usuário `estoque` é mantido):
+
+```bash
+sudo mysql -e "DROP DATABASE IF EXISTS estoque_veiculos; CREATE DATABASE estoque_veiculos CHARACTER SET utf8mb4;"
+```
+
+> **Atenção:** o comando `DROP DATABASE` remove todos os dados do banco. Use-o apenas em ambiente de desenvolvimento e teste.
+
+2. Confira usuário e senha em `src/main/resources/application.properties`.
+3. Entre na **pasta raiz do projeto**, onde se encontra o arquivo [`pom.xml`](pom.xml), e inicie o sistema (o Maven lê as dependências do `pom.xml` e as baixa automaticamente):
+
+```bash
+cd sistema-automotivo-estoque-veiculos
+ls pom.xml
+mvn spring-boot:run
+```
+
+4. Acesse `http://localhost:8080` no navegador. As tabelas são criadas automaticamente na primeira execução.
+5. Para encerrar, pressione `Ctrl + C` no terminal em que a aplicação foi iniciada.
+
+> Se o Maven indicar `release version 17 not supported`, o Java padrão da máquina não é o 17. Ajuste-o antes de executar.
+
+### Problemas comuns
+
+| Mensagem | Causa | Solução |
+|---|---|---|
+| `No plugin found for prefix 'spring-boot'` | O comando `mvn spring-boot:run` foi executado fora da pasta do projeto | Entrar na pasta que contém o `pom.xml` (`cd`) e executar novamente |
+| `Port 8080 was already in use` | Já existe uma instância da aplicação em execução | Encerrar a instância anterior: `Ctrl + C` no terminal dela ou, se não souber onde está, `lsof -i :8080` e `kill <PID>`. Também é possível usar outra porta: `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081` |
+| Falha de conexão com o banco | MySQL parado, ou banco e usuário inexistentes | Verificar `sudo systemctl status mysql` e refazer o passo 1 |
+
+**English**
 
 **Requirements:** Java 17, Maven 3.8 or later and MySQL 8, with the MySQL service running (`sudo systemctl status mysql`).
 
@@ -468,7 +454,19 @@ mvn spring-boot:run
 | `Port 8080 was already in use` | An instance of the application is already running | Stop the previous instance: `Ctrl + C` in its terminal or, if you do not know where it is, `lsof -i :8080` and `kill <PID>`. You can also use another port: `mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081` |
 | Database connection failure | MySQL stopped, or database and user do not exist | Check `sudo systemctl status mysql` and redo step 1 |
 
-## Web interface
+---
+
+## Interface web / Web interface
+
+**Português**
+
+Com o sistema ligado, a página `http://localhost:8080` permite:
+
+- cadastrar, editar e remover veículos, marcas e modelos;
+- consultar veículos com filtros por marca, modelo, faixa de preço, ano, situação e tipo;
+- carregar dados de exemplo (botão **Carregar dados de exemplo**), para demonstração.
+
+**English**
 
 With the system running, the page `http://localhost:8080` allows you to:
 
@@ -476,7 +474,41 @@ With the system running, the page `http://localhost:8080` allows you to:
 - search vehicles with filters by brand, model, price range, year, status and type;
 - load sample data (**Carregar dados de exemplo** button), for demonstration.
 
-## REST API
+---
+
+## API REST / REST API
+
+**Português**
+
+| Operação | Método | Caminho |
+|---|---|---|
+| Listar / filtrar veículos | GET | `/api/veiculos` |
+| Buscar veículo | GET | `/api/veiculos/{id}` |
+| Cadastrar veículo | POST | `/api/veiculos` |
+| Atualizar veículo | PUT | `/api/veiculos/{id}` |
+| Remover veículo | DELETE | `/api/veiculos/{id}` |
+| Marcas | GET, POST, PUT, DELETE | `/api/marcas` |
+| Modelos | GET, POST, PUT, DELETE | `/api/modelos` |
+
+Filtros de `GET /api/veiculos` (todos opcionais): `marca`, `modelo`, `precoMin`, `precoMax`, `ano`, `status` (`DISPONIVEL`, `RESERVADO`, `VENDIDO`) e `tipo` (`CARRO`, `MOTO`, `CAMINHAO`).
+
+Exemplo de consulta com filtros:
+
+```bash
+curl "http://localhost:8080/api/veiculos?marca=Honda&status=VENDIDO"
+```
+
+Exemplo de cadastro:
+
+```bash
+curl -X POST http://localhost:8080/api/veiculos \
+  -H "Content-Type: application/json" \
+  -d '{"modelo":{"id":1},"tipo":"CARRO","anoFabricacao":2022,"cor":"Prata","preco":120000.00,"quilometragem":15000,"status":"DISPONIVEL"}'
+```
+
+Dados inválidos (por exemplo, preço negativo) são recusados com resposta `400` e mensagem em JSON.
+
+**English**
 
 | Operation | Method | Path |
 |---|---|---|
@@ -506,6 +538,14 @@ curl -X POST http://localhost:8080/api/veiculos \
 
 Invalid data (for example, a negative price) is rejected with a `400` response and a JSON message.
 
-## License
+---
+
+## Licença / License
+
+**Português**
+
+Distribuído sob a licença MIT. Consulte o arquivo [`LICENSE`](LICENSE).
+
+**English**
 
 Distributed under the MIT license. See the [`LICENSE`](LICENSE) file.
